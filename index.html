@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#102b50" />
+  <title>Production & Bagouda — Inventaire</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">L</span><div><b>INVENTAIRE</b><small>Production & Bagouda</small></div></div>
+    <nav><a class="active" href="#dashboard">▦ <span>Tableau de bord</span></a><a href="#saisie">▤ <span>Saisie inventaire</span></a><a href="#rapport">▧ <span>Rapport final</span></a></nav>
+    <div class="side-note">Inventaire simple<br/>• Calcul automatique<br/>• Rapport instantané</div>
+  </aside>
+  <main>
+    <header class="topbar"><div><p class="eyebrow">GESTION DE STOCK</p><h1>Production & Magasin (Bagouda)</h1><p class="subtitle">Saisissez les quantités de chaque famille : les calculs se mettent à jour automatiquement.</p></div><div class="date-pill" id="dateLabel">—</div></header>
+    <section id="dashboard" class="stats">
+      <article class="stat"><div class="stat-icon blue">▦</div><div><small>Total Production</small><strong id="totalProd">0</strong><span>pièces</span></div></article>
+      <article class="stat"><div class="stat-icon violet">▣</div><div><small>Total Bagouda</small><strong id="totalBag">0</strong><span>pièces</span></div></article>
+      <article class="stat"><div class="stat-icon green">✓</div><div><small>Total général</small><strong id="totalCombined">0</strong><span>pièces cumulées</span></div></article>
+      <article class="stat"><div class="stat-icon amber">↔</div><div><small>Écart total</small><strong id="totalDiff">0</strong><span>Production − Bagouda</span></div></article>
+    </section>
+    <section id="saisie" class="entry-grid">
+      <article class="panel">
+        <div class="panel-head"><div class="head-icon">▦</div><div><h2>Production</h2><p>Quantités disponibles en production</p></div></div>
+        <div class="family-row"><label for="prodEp">Épissure</label><div class="input-wrap"><input id="prodEp" type="number" min="0" step="1" value="0"><span>pcs</span></div></div>
+        <div class="family-row"><label for="prodFil">Fil torsadé</label><div class="input-wrap"><input id="prodFil" type="number" min="0" step="1" value="0"><span>pcs</span></div></div>
+        <div class="panel-total"><span>Total Production</span><strong id="prodSum">0 pièces</strong></div>
+      </article>
+      <article class="panel">
+        <div class="panel-head"><div class="head-icon purple">▣</div><div><h2>Magasin — Bagouda</h2><p>Quantités disponibles en magasin</p></div></div>
+        <div class="family-row"><label for="bagEp">Épissure</label><div class="input-wrap"><input id="bagEp" type="number" min="0" step="1" value="0"><span>pcs</span></div></div>
+        <div class="family-row"><label for="bagFil">Fil torsadé</label><div class="input-wrap"><input id="bagFil" type="number" min="0" step="1" value="0"><span>pcs</span></div></div>
+        <div class="panel-total purple-total"><span>Total Bagouda</span><strong id="bagSum">0 pièces</strong></div>
+      </article>
+    </section>
+    <section id="rapport" class="panel report">
+      <div class="report-head"><div><p class="eyebrow">SYNTHÈSE AUTOMATIQUE</p><h2>Rapport final d’inventaire</h2><p class="subtitle">Comparaison Production / Bagouda par famille</p></div><div class="report-actions"><button class="secondary" id="csvBtn">↓ Export CSV</button><button class="primary" id="printBtn">▣ Imprimer / PDF</button></div></div>
+      <div id="statusBanner" class="banner">✓ Inventaire enregistré sur cet appareil</div>
+      <div class="table-wrap"><table><thead><tr><th>Famille</th><th>Production</th><th>Bagouda</th><th>Écart</th><th>Total cumulé</th><th>État</th></tr></thead><tbody id="reportRows"></tbody><tfoot id="reportFoot"></tfoot></table></div>
+      <div class="report-bottom"><div class="summary-card"><h3>Stock total des deux zones</h3><div class="big-total" id="finalTotal">0 <small>pièces</small></div><p>Production + Bagouda, toutes familles confondues.</p></div><div class="summary-card"><h3>Lecture de l’écart</h3><p><b>Écart positif :</b> plus de pièces en production.</p><p><b>Écart négatif :</b> plus de pièces à Bagouda.</p><p><b>Écart zéro :</b> quantités identiques.</p></div></div>
+      <div class="footer-line"><span>Rapport généré automatiquement</span><span id="lastSaved">En attente de saisie</span></div>
+    </section>
+    <div class="toolbar"><button class="danger-outline" id="resetBtn">↺ Réinitialiser les quantités</button><span>Les données sont sauvegardées localement sur ce navigateur.</span></div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
